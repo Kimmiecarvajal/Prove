@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta para mi Amor</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            color: #333;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: auto;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            display: none;
+        }
+        .card.show {
+            opacity: 1;
+            transform: scale(1);
+            display: block;
+        }
+        .couple-photo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .couple-photo {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: darkred;
+        }
+        .hidden-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button class="button" onclick="openCard()">Abrir Carta</button>
+    
+    <div class="card" id="card">
+        <div id="content1">
+            <h1>Para mi bebe <3</h1>
+            <button class="button" onclick="nextContent(1)">Siguiente</button>
+        </div>
+        
+        <div class="hidden-content" id="content2">
+            <p>Feliz San Valentin a mi niño de ojos bonitos.</p>
+            <button class="button" onclick="prevContent(2)">Regresar</button>
+            <button class="button" onclick="nextContent(2)">Siguiente</button>
+        </div>
+        
+        <div class="hidden-content" id="content3">
+            <p>Tengo la dicha de compartir mi vida y amor con alguien maravilloso, tú.</p>
+            <button class="button" onclick="prevContent(3)">Regresar</button>
+            <button class="button" onclick="nextContent(3)">Siguiente</button>
+        </div>
+        
+        <div class="hidden-content" id="content4">
+            <p>Hoy es un buen día para recordar por qué estamos juntos, amor.</p>
+            <button class="button" onclick="prevContent(4)">Regresar</button>
+            <button class="button" onclick="nextContent(4)">Siguiente</button>
+        </div>
+        
+        <div class="hidden-content" id="content5">
+            <p>Gracias por llegar a mi vida, gracias por estar a mi lado.</p>
+            <button class="button" onclick="prevContent(5)">Regresar</button>
+            <button class="button" onclick="nextContent(5)">Siguiente</button>
+        </div>
+        
+        <div class="hidden-content" id="content6">
+            <p>You are my sun, my moon and all of my stars.</p>
+            <button class="button" onclick="prevContent(6)">Regresar</button>
+            <button class="button" onclick="nextContent(6)">Siguiente</button>
+        </div>
+        
+        <div class="hidden-content" id="content7">
+            <p>I love u everyday.</p>
+            <div class="couple-photo-container">
+                <img src="https://i.imgur.com/9qFpQju.jpeg" alt="Nuestra Foto Juntos" class="couple-photo">
+                <button class="button" onclick="prevContent(7)">Regresar</button>
+                <button class="button" onclick="closeCard()">Cerrar Carta</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openCard() {
+            document.getElementById("card").classList.add("show");
+            showContent(1);
+        }
+        
+        function showContent(step) {
+            for (let i = 1; i <= 7; i++) {
+                document.getElementById("content" + i).style.display = "none";
+            }
+            document.getElementById("content" + step).style.display = "block";
+        }
+        
+        function nextContent(step) {
+            showContent(step + 1);
+        }
+        
+        function prevContent(step) {
+            showContent(step - 1);
+        }
+        
+        function closeCard() {
+            document.getElementById("card").classList.remove("show");
+            showContent(1);
+        }
+    </script>
+</body>
+</html>
